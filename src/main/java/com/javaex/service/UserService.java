@@ -1,0 +1,61 @@
+package com.javaex.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.javaex.dao.UserDao;
+import com.javaex.vo.PersonVo;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserDao userDao;
+	
+	// 회원가입(insert)
+	public int exeInsertPerson(PersonVo personVo) {
+		
+		System.out.println("service insert용");
+		
+		int count = userDao.insertPerson(personVo);
+		System.out.println(count);
+		
+		
+		return count;
+		
+	}
+	
+	//로그인(selectOne)
+	
+	public PersonVo exeSelectOne(PersonVo personVo) {
+		System.out.println("service selectOne이용");
+		
+		PersonVo authUser = userDao.selectUser(personVo);
+		System.out.println("service"+personVo);
+		
+		
+		return authUser;
+		
+	}
+	
+	//수정폼 (한사람 정보 가져오기)(자료형은 리턴)
+	public PersonVo getPersonOne(int no) {
+		
+		System.out.println("service 사람정보 가져오기");
+		
+		int count = -1;
+		
+		PersonVo personVo = userDao.getPersonOne(no);
+		System.out.println("sevice"+no);
+		System.out.println(count);
+		
+		return personVo;
+	}
+	
+	
+	//수정
+	
+
+	
+	
+}
