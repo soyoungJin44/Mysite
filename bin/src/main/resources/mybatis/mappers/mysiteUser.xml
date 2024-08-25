@@ -41,17 +41,6 @@
 		]]>
 	</select>
 	
-	<update id="updatePerson" parameterType="com.javaex.vo.PersonVo">
-		<![CDATA[
-			update person set
-							password = #{password}
-   							,name =	#{name}
-   							,gender = #{gender}
-					where no = #{no}
-		]]>
-		
-	</update>
-	
 	
 	
 

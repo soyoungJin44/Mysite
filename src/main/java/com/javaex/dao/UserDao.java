@@ -65,7 +65,6 @@ public class UserDao {
 		//수정 (한사람 정보 가져오기)
 		public PersonVo getPersonOne(int no) {
 			System.out.println("dao 한사람 가져오기");
-			int count = -1;
 			
 			System.out.println("dao" + no);
 			PersonVo personVo = sqlSession.selectOne("user.getPersonOne", no);
@@ -78,9 +77,16 @@ public class UserDao {
 		
 		
 		//수정 (update)
-		public void update(int no) {
+		public PersonVo update(PersonVo personVo) {
 			System.out.println("Dao 업데이트용");
 			
+			int count = sqlSession.update("user.updatePerson", personVo);
+			
+			if(count == 1) {
+				return personVo;
+			}else {
+				return null;
+			}
 			
 			
 		}

@@ -126,12 +126,16 @@ public class UserCotroller {
 	//수정 기능
 	
 	@RequestMapping(value="/user/modify", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modify(HttpSession session) {
+	public String modify(@ModelAttribute PersonVo personVo, HttpSession session) {
 		
 		System.out.println("수정 기능이용");
 		
+		PersonVo npersonVo = userService.exeupdatePerson(personVo);
+		System.out.println("수정"+personVo);
 		
-		return "";
+		session.setAttribute("authUser", npersonVo);
+		
+		return "redirect:/main";
 	}
 	
 	

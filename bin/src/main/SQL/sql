@@ -1,0 +1,25 @@
+use web_db;
+
+create table person (
+	no			integer			AUTO_INCREMENT PRIMARY KEY
+	,id         varchar(20)		UNIQUE not null
+    ,password   varchar(20)		not null
+    ,name   	varchar(20)
+    ,gender		varchar(10)
+    );
+    
+insert into person
+values(null, 'wls', 'pass', '진', '여');
+
+insert into person
+values(null, 'qw', 'pass', '진', '여');
+
+insert into person
+values(null, 'ee', 'pass', '진', '여');
+
+insert into person
+values(null, 'wrrls', 'pass', '진', '여');
+
+
+select *
+from person; 

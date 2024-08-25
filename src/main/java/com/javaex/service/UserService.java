@@ -53,7 +53,19 @@ public class UserService {
 	}
 	
 	
-	//수정
+	//수정기능
+	
+	public PersonVo exeupdatePerson(PersonVo personVo) {
+		
+		System.out.println("service updateperson이용");
+		
+		PersonVo npersonVo = userDao.update(personVo);
+		
+//		PersonVo npersonVo = userDao.getPersonOne(personVo.getNo());
+		
+		
+		return npersonVo;
+	}
 	
 
 	
