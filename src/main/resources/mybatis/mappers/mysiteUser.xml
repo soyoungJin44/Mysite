@@ -30,7 +30,7 @@
 	<select id="getPersonOne" parameterType="int" resultType="com.javaex.vo.PersonVo">
 		<![CDATA[
 		
-			select   no
+			select   no   
 					,id
 					,password
         			,name
