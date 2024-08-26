@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
@@ -12,36 +12,9 @@
 
 <body>
 	<div id="wrap">
-
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite</a>
-			</h1>
-
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->	
-			<ul>
-				<li><a href="" class="btn_s">로그인</a></li>
-				<li><a href="" class="btn_s">회원가입</a></li>
-			</ul>
-			
-		</div>
-		<!-- //header -->
-
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
+	
+	<!-- 헤더부분 불러오기 -->
+			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -71,7 +44,7 @@
 	
 				<div id="user">
 					<div id="modifyForm">
-						<form action="" method="">
+						<form action="${pageContext.request.contextPath}/user/modify" method="get">
 	
 							<!-- 아이디 -->
 							<div class="form-group">
@@ -82,13 +55,13 @@
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<label class="form-text" for="input-pass">패스워드</label> 
-								<input type="text" id="input-pass" name="password" value="" placeholder=""	>
+								<input type="text" id="input-pass" name="password" value="${id.password }" placeholder=""	>
 							</div>
 	
 							<!--이름 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label> 
-								<input type="text" id="input-name" name="name" value="" placeholder="">
+								<input type="text" id="input-name" name="name" value="${id.name }" placeholder="">
 							</div>
 	
 							<!-- //나이 -->
@@ -96,11 +69,11 @@
 								<span class="form-text">성별</span> 
 								
 								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="남" > 
+								<input type="radio" id="rdo-male" name="gender" value="남" <c:if test="${id.gender == '남' }">checked </c:if>> 
 								
 								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="여" > 
-	
+								<input type="radio" id="rdo-female" name="gender" value="여" <c:if test="${id.gender == '여' }">checked </c:if> > 
+								<input type="hidden" name="no" value="${sessionScope.authUser.no}" >
 							</div>
 	
 							<!-- 버튼영역 -->
@@ -121,8 +94,9 @@
 		</div>
 		<!-- //container  -->
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
+			<!-- 푸터부분 불러오기 -->
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+		
 		</div>
 		<!-- //footer -->
 		
