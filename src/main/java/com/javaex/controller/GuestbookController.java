@@ -67,8 +67,14 @@ public class GuestbookController {
 		System.out.println(guestbookVo);
 		int count = guestbookService.exeDelete(guestbookVo);
 		
+//		System.out.println("/////////sakfhdfashfjshkl" + count);
 		
-		return "redirect:/guestbook/list";
+		if(count > 0) {
+			return "redirect:/guestbook/list";
+		}else {
+			return "redirect:/guestbook/deleteform";
+			
+		}
 		
 	}
 
