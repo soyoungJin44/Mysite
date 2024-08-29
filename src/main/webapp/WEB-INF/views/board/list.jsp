@@ -8,8 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../../assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -17,35 +17,8 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite</a>
-			</h1>
-
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->	
-			<ul>
-				<li><a href="" class="btn_s">로그인</a></li>
-				<li><a href="" class="btn_s">회원가입</a></li>
-			</ul>
-			
-		</div>
-		<!-- //header -->
-		
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
+		<!-- 헤더부분 불러오기 -->
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -92,46 +65,20 @@
 								</tr>
 							</thead>
 							<tbody>
+								
+								<c:forEach items="${requestScope.personList}" var="boardVo">
 								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
+									<td>${boardVo.no}</td>
+									<td class="text-left"><a href="/mysite/board/read?no=${boardVo.no}">${boardVo.title}</a></td>
+									<td>${boardVo.name}</td>
+									<td>${boardVo.hit}</td>
+									<td>${boardVo.reg_date}  ${boardVo.user_no} / ${sessionScope.authUser.no }   </td>
+									<!--<input type="text" name="no" value="${boardVo.no}"> -->
+									<c:if test="${boardVo.user_no == sessionScope.authUser.no}">
+									<td><a href="/mysite/board/delete?no=${boardVo.no}">[삭제]</a></td>
+									</c:if>
 								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr class="last">
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 			
@@ -154,8 +101,10 @@
 							
 							<div class="clear"></div>
 						</div>
+						
+						<c:if test="${sessionScope.authUser != null}">
 						<a id="btn_write" href="">글쓰기</a>
-					
+						</c:if>
 					</div>
 					<!-- //list -->
 				</div>
@@ -167,10 +116,8 @@
 		<!-- //container  -->
 		
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
-		<!-- //footer -->
+		<!-- 푸터부분 불러오기 -->
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	</div>
 	<!-- //wrap -->
 
