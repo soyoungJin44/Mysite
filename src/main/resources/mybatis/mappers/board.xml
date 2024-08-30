@@ -19,7 +19,7 @@
 	</select>
 	
 	
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="com.javaex.vo.BoardVo">
 		<![CDATA[
 		
 			delete from board

@@ -39,9 +39,10 @@ public class BoardDao {
 	//delete
 	public int delete(BoardVo boardVo) {
 		System.out.println("dao delete 준비");
+		System.out.println("dao>>>>>" + boardVo);
 		
-		int count = sqlSession.delete("boare.delete", boardVo);
-		System.out.println("dao>>>>>" + count);
+		int count = sqlSession.delete("board.delete", boardVo);
+		
 		return count;
 	}
 

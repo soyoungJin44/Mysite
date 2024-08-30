@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestbookVo;
@@ -77,5 +76,20 @@ public class GuestbookController {
 		}
 		
 	}
-
+	
+	//################ ajaxindex 방명록 ####### script ###############
+	
+	@RequestMapping(value="/guestbook/ajaxindex", method= {RequestMethod.GET, RequestMethod.POST})
+	public String ajaxindex() {
+		
+		System.out.println("ajaxindex 준비완");
+		
+		
+		
+		return null;
+		
+		
+	}
 }
+		
+	

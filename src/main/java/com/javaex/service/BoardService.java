@@ -38,9 +38,11 @@ public class BoardService {
 	
 	public int exedelete(BoardVo boardVo) {
 		System.out.println("service delete 준비완");
+		System.out.println("service/////"+boardVo);
+		
 		
 		int count = boardDao.delete(boardVo);
-		System.out.println("service/////"+boardVo);
+		
 		return count;
 		
 		
