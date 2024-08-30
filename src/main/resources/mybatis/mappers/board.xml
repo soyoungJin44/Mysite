@@ -35,6 +35,8 @@
 		
 		<![CDATA[
 			select	 p.name
+					,b.no
+					,b.user_no
 					,b.hit
         			,b.reg_date
         			,b.title
@@ -44,5 +46,18 @@
 			and b.no = #{param.no}
 		]]>
 	</select>
+	
+	<update id="updateOne" parameterType="com.javaex.vo.BoardVo">
+		
+		<![CDATA[
+			
+			update board
+				set title = #{title},
+    			content = #{content}
+			where no = #{no}
+		
+		]]>
+	
+	</update>
 
 </mapper>

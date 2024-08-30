@@ -37,12 +37,14 @@ public class BoardController {
 	
 	//읽기폼
 	@RequestMapping(value="/board/read", method= {RequestMethod.GET, RequestMethod.POST})
-	public String readForm(@ModelAttribute BoardVo boardVo, @RequestParam (value="no") int no) {
+	public String readForm(@ModelAttribute BoardVo boardVo, @RequestParam (value="no") int no, Model model) {
 		
 		System.out.println("읽기폼 준비완");
 		
-		boardService.exeread(no);
+		BoardVo personVo = boardService.exeread(no);
+		System.out.println(personVo);
 		
+		model.addAttribute("boardVo", personVo);
 		
 		return "/board/read";
 		
@@ -69,7 +71,34 @@ public class BoardController {
 //		boardService.exedelete();
 //		int no = ((PersonVo)session.getAttribute("authUser")).getNo();
 		
+		return "redirect:/board/list";
 		
+	}
+	
+	//수정폼
+	
+	@RequestMapping(value="/board/modifyform", method= {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm(@RequestParam(value="no") int no) {
+		System.out.println("수정 폼 준 완");
+		
+		
+		BoardVo	boardVo = boardService.exemodify(no);
+		System.out.println(boardVo);
+		return "/board/modifyForm";
+		
+		
+	}
+	
+	
+	
+	//수정하기
+	
+	@RequestMapping(value="/board/modifyform", method= {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@ModelAttribute BoardVo boardVo) {
+		
+		System.out.println("수정준비완");
+		
+		boardService.exeModifyform(boardVo);
 		
 		return "redirect:/board/list";
 		

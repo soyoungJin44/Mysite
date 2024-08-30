@@ -48,4 +48,28 @@ public class BoardService {
 		
 	}
 	
+	//modifyform
+	
+	public BoardVo exemodify(int no) {
+		
+		System.out.println("service modifyform준완");
+		
+		BoardVo boardVo = boardDao.modify(no);
+		
+		return boardVo;
+	}
+	
+	
+	//modify
+	
+	public int exeModifyform(BoardVo boardVo) {
+		System.out.println("서비스 수정 준비완");
+		
+		int count = boardDao.modifyWrite(boardVo);
+		
+		return count;
+		
+		
+	}
+	
 }

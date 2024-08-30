@@ -17,7 +17,8 @@ import com.javaex.vo.GuestbookVo;
 @Controller
 public class GuestbookController {
 	
-	@Autowired GuestbookService guestbookService;
+	@Autowired 
+	private GuestbookService guestbookService;
 	
 	//리스트 
 	
@@ -84,12 +85,13 @@ public class GuestbookController {
 		
 		System.out.println("ajaxindex 준비완");
 		
-		
+		//방명록 데이터 가져오지않는다 >> 초반 폼만 한번 출력시켜주고, 데이터 받고 그걸 스크립트에 넘겨서 스크립트에서 ㅇㅇㅇㅇㅇ
 		
 		return null;
 		
-		
 	}
+	
+
 }
 		
 	

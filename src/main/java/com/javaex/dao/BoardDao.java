@@ -45,5 +45,31 @@ public class BoardDao {
 		
 		return count;
 	}
+	
+	//수정 폼
+	
+	public BoardVo modify(int no) {
+		System.out.println("dao 준완");
+		
+		BoardVo boardVo = sqlSession.selectOne("board.selectOne", no);
+		
+		return boardVo;
+	}
+	
+	
+	
+	
+	// 수정
+	
+	public int modifyWrite(BoardVo boardVo) {
+		
+		System.out.println("dao modifyform 준비 완");
+		
+		System.out.println(boardVo);
+		int count = sqlSession.update("board.updateOne", boardVo);
+		
+		return count;
+		
+	}
 
 }

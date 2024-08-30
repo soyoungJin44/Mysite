@@ -72,7 +72,7 @@
 									<td class="text-left"><a href="/mysite/board/read?no=${boardVo.no}">${boardVo.title}</a></td>
 									<td>${boardVo.name}</td>
 									<td>${boardVo.hit}</td>
-									<td>${boardVo.reg_date}  ${boardVo.user_no} / ${sessionScope.authUser.no }   </td>
+									<td>${boardVo.reg_date}  <!-- ${boardVo.user_no} / ${sessionScope.authUser.no }   </td>
 									<!--<input type="text" name="no" value="${boardVo.no}"> -->
 									<c:if test="${boardVo.user_no == sessionScope.authUser.no}">
 									<td><a href="${pageContext.request.contextPath}/board/delete?no=${boardVo.no}">[삭제]</a></td>
