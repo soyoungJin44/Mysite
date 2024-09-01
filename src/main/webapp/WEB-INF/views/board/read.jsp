@@ -23,7 +23,7 @@
 			<div id="aside">
 				<h2>게시판</h2>
 				<ul>
-					<li><a href="">일반게시판</a></li>
+					<li><a href="http://localhost${pageContext.request.contextPath}/board/list">일반게시판</a></li>
 					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</div>
@@ -78,7 +78,9 @@
 								</span>
 							</div>
 							
-							<a id="btn_modify" href="http://localhost:8888${pageContext.request.contextPath}/board/modifyform?=${no}">수정</a>
+							<c:if test="${sessionScope.authUser.name == boardVo.name}">
+							<a id="btn_modify" href="http://localhost:8888${pageContext.request.contextPath}/board/modifyform?no=${boardVo.no}">수정</a>
+							</c:if>
 							<a id="btn_modify" href="http://localhost:8888${pageContext.request.contextPath}/board/list">목록</a>
 							
 						</form>

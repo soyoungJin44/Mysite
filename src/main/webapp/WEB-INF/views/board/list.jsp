@@ -103,7 +103,7 @@
 						</div>
 						
 						<c:if test="${sessionScope.authUser != null}">
-						<a id="btn_write" href="">글쓰기</a>
+						<a id="btn_write" href="http://localhost:8888${pageContext.request.contextPath}/board/writeform">글쓰기</a>
 						</c:if>
 					</div>
 					<!-- //list -->

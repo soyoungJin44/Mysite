@@ -59,5 +59,16 @@
 		]]>
 	
 	</update>
+	
+	<insert id="insert" parameterType="com.javaex.vo.BoardVo">
+	
+		<![CDATA[
+		
+			insert into board 
+			values(null, #{title}, #{content}, 0 , now(), #{user_no})
+		
+		]]>
+	
+	</insert>
 
 </mapper>

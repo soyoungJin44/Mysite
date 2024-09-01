@@ -72,4 +72,17 @@ public class BoardService {
 		
 	}
 	
+	//write 
+	
+	public int exeWrite(BoardVo boardVo) {
+		
+		System.out.println(boardVo);
+		int count = boardDao.write(boardVo);
+		
+		
+		return count;
+		
+	}
+	
+	
 }
