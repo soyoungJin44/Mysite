@@ -37,14 +37,35 @@ public class ApiGuestbookController {
 	
 	@ResponseBody
 	@RequestMapping(value="/api/guestbooks/write",method= {RequestMethod.GET,RequestMethod.POST})
-	public String write(@ModelAttribute GuestbookVo guestbookVo) {
+	public GuestbookVo write(@ModelAttribute GuestbookVo guestbookVo) {
 		
 		System.out.println(guestbookVo);
+		//int count = guestbookService.exeInsert(guestbookVo);
+//		System.out.println("+++++++++++++"+count);
 		
+		// insert 받은 데이터로만 새롭게 만들어주기(기존 방식 x)
 		
-		return "";
+		GuestbookVo personOneVo = guestbookService.exeAdd(guestbookVo);
+		System.out.println("!!!!!!!!!"+personOneVo);
+		
+		return personOneVo;
 		
 	}
+	
+	// 방명록 삭제
+	@ResponseBody
+	@RequestMapping(value="/api/guestbooks/remove", method= {RequestMethod.GET, RequestMethod.POST})
+	public int delete(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("컨트롤러 리무브");
+		System.out.println(guestbookVo);
+		
+		int count = guestbookService.exeDelete(guestbookVo);
+		
+		System.out.println("ajax"+count);
+		
+		return count;
+	}
+	
 	
 	
 

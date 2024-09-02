@@ -80,7 +80,7 @@
 								</textarea>
 							</div>
 							
-							<a id="btn_cancel" href="http://localhost:8888${pageContext.request.contextPath}/board/read">취소</a>
+							<a id="btn_cancel" href="http://localhost:8888${pageContext.request.contextPath}/board/read?no=${boardVo.no}">취소</a>
 							<button id="btn_modify" type="submit" >수정</button>
 							
 						</form>

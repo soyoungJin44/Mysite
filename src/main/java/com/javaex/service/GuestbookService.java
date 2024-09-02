@@ -24,12 +24,16 @@ public class GuestbookService {
 	
 	//등록
 	
-	public int exeInsert(GuestbookVo guestbookVo) {
+	public GuestbookVo exeAdd(GuestbookVo guestbookVo) {
 		System.out.println("service insert");
 		
-		int count = guestbookDao.insertPerson(guestbookVo);
+		//저장 insert해주기
+		int count = guestbookDao.insertSelectKey(guestbookVo);
 		
-		return count;
+		//한명 정보 가져오기
+		GuestbookVo personOneVo = guestbookDao.guestbookSelectOne(guestbookVo.getNo());
+		
+		return personOneVo;
 	}
 	
 	//삭제
@@ -43,5 +47,7 @@ public class GuestbookService {
 		
 		
 	}
+	
+	
 
 }

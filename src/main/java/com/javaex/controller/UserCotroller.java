@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.PersonVo;
@@ -24,7 +26,7 @@ public class UserCotroller {
 	//메서드 일반
 
 	
-	//로그인 폼
+	//회원가입 폼
 	@RequestMapping (value="/joinform", method= {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
 		
@@ -34,7 +36,7 @@ public class UserCotroller {
 	}
 	
 
-	//로그인 기능
+	//회원가입 기능
 	@RequestMapping (value="/insert", method= {RequestMethod.GET, RequestMethod.POST})
 	public String insertPerson(@ModelAttribute PersonVo personVo) {
 		
@@ -136,6 +138,19 @@ public class UserCotroller {
 		session.setAttribute("authUser", npersonVo);
 		
 		return "redirect:/main";
+	}
+	
+	// ajax 중복확인
+	@ResponseBody
+	@RequestMapping(value="/api/check", method= {RequestMethod.GET, RequestMethod.POST})
+	public boolean check(String id) {
+		System.out.println("기존 컨트롤러 쳌");
+		System.out.println(id);
+		boolean result = userService.execheck(id);
+		
+		System.out.println(result);
+		
+		return result;
 	}
 	
 	

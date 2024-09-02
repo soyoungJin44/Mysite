@@ -35,19 +35,7 @@ public class GuestbookController {
 		
 	}
 	
-	//등록
-	
-	@RequestMapping(value="/guestbook/insert", method= {RequestMethod.GET, RequestMethod.POST})
-	public String insert(@ModelAttribute GuestbookVo guestbookVo) {
-	
-		System.out.println("insert용");
-		
-		guestbookService.exeInsert(guestbookVo);
-		
-		System.out.println("controller"+ guestbookVo);
-		
-		return "redirect:/guestbook/list";
-	}
+
 	
 	//삭제폼
 	@RequestMapping(value="/guestbook/deleteform", method= {RequestMethod.GET, RequestMethod.POST})
@@ -87,7 +75,7 @@ public class GuestbookController {
 		
 		//방명록 데이터 가져오지않는다 >> 초반 폼만 한번 출력시켜주고, 데이터 받고 그걸 스크립트에 넘겨서 스크립트에서 ㅇㅇㅇㅇㅇ
 		
-		return null;
+		return "/guestbook/ajaxindex";
 		
 	}
 	

@@ -51,6 +51,10 @@ public class BoardDao {
 	public BoardVo modify(int no) {
 		System.out.println("dao 준완");
 		
+		//조회수 올리기
+		
+		
+		
 		BoardVo boardVo = sqlSession.selectOne("board.selectOne", no);
 		
 		return boardVo;

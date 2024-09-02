@@ -52,6 +52,18 @@
 		
 	</update>
 	
+	<!-- 중복체크 -->
+	
+	<select id="check" parameterType="String" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			select	no
+			from person
+			where id = #{id}
+			
+		]]>
+	
+	</select>
+	
 	
 	
 

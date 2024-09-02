@@ -67,6 +67,17 @@ public class UserService {
 		return npersonVo;
 	}
 	
+	//중복체크
+	
+	public boolean execheck(String id) {
+		System.out.println("중복체크 서비스 준비");
+		
+		boolean result = userDao.check(id);
+		
+		return result;
+		
+	}
+	
 
 	
 	

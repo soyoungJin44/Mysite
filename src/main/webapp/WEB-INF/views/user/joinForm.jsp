@@ -10,6 +10,10 @@
 <link href="http://localhost:8888${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="http://localhost:8888${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
+<!-- Axios 라이브러리 포함 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 </head>
 
 <body>
@@ -51,7 +55,7 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="">중복체크</button>
+								<button type="button" id="btn-check">중복체크</button>
 							</div>
 
 							<!-- 비밀번호 -->
@@ -99,6 +103,65 @@
 
 	</div>
 	<!-- //wrap -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	
+	console.log('돔트리 완성');
+	
+	let check = document.querySelector('#btn-check');
+	check.addEventListener('click', duplicateCheck);
+	
+	
+	
+	
+	function duplicateCheck(event){
+		
+		let newIdTag = document.querySelector('#input-uid');
+		let newId = newIdTag.value;
+		
+		axios({
+
+	        method: 'get',           // put, post, delete                   
+
+	        url: '${pageContext.request.contextPath}/api/check',
+
+	        headers: {"Content-Type" : "application/json; charset=utf-8"}, //전송타입
+
+	        params:{id: newId},  //get방식 파라미터로 값이 전달
+
+	        //data: guestbookVo,   //put, post, delete 방식 자동으로 JSON으로 변환 전달
+
+	    
+
+	        responseType: 'json' //수신타입
+
+	    }).then(function (response) {
+
+	        console.log(response); //수신데이타
+			console.log(response.data)
+	        
+	        if(response.data){
+	        	alert("사용할수있는 아이디다")
+	        }else{
+	        	alert("사용할수없다!")
+	        }
+	    
+
+	    }).catch(function (error) {
+
+	        console.log(error);
+
+	    
+	    });
+		
+	}
+});
+
+
+
+</script>
+
 
 </body>
 
