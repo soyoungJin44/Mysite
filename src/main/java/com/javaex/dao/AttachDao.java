@@ -3,7 +3,8 @@ package com.javaex.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.javaex.vo.AttachVo;
 
 @Repository
 public class AttachDao {
@@ -12,12 +13,13 @@ public class AttachDao {
 	
 	//파일 업로드
 	
-	public String upload(MultipartFile file) {
-		System.out.println("dao upload 준 완");
-
-		
-		
-		return "";
-	}
+//	public String upload(AttachVo attachVo) {
+//		System.out.println("dao upload 준 완");
+//
+//		AttachVo dataVo = new AttachVo(attachVo);
+//		sqlSession.dataVo
+//		
+//		return "";
+//	}
 	
 }
