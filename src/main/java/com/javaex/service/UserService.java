@@ -72,9 +72,13 @@ public class UserService {
 	public boolean execheck(String id) {
 		System.out.println("중복체크 서비스 준비");
 		
-		boolean result = userDao.check(id);
+		int count = userDao.check(id);
 		
-		return result;
+		if(count >= 1) {
+			return true;
+		}else {
+			return false;
+		}
 		
 	}
 	

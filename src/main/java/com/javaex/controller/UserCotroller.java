@@ -143,7 +143,7 @@ public class UserCotroller {
 	// ajax 중복확인
 	@ResponseBody
 	@RequestMapping(value="/api/check", method= {RequestMethod.GET, RequestMethod.POST})
-	public boolean check(String id) {
+	public boolean check(@RequestParam(value="id") String id) {
 		System.out.println("기존 컨트롤러 쳌");
 		System.out.println(id);
 		boolean result = userService.execheck(id);

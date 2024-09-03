@@ -57,6 +57,8 @@
 								<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
 								<button type="button" id="btn-check">중복체크</button>
 							</div>
+							<div id="textId">
+							</div>
 
 							<!-- 비밀번호 -->
 							<div class="form-group">
@@ -109,16 +111,38 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	console.log('돔트리 완성');
 	
+	// 중복체크
 	let check = document.querySelector('#btn-check');
 	check.addEventListener('click', duplicateCheck);
 	
+	//회원가입
+//	let btn-login = document.querySelector('#btn-submit');
+//	check.addEventListener('submit', btnjoin);
+	
+
+	// ######## 코드 모으기
+	
+	// 회원가입 버튼
+	
+//	function btnjoin(event){
+	//	
+//		let nameTag = document.querySelector('#input-uid');
+//		let passwordTag = document.querySelector('#input-password');
+//		let nameTag = dosument.querySelector('#input-name');
+		
+		
+//	}
 	
 	
 	
+	
+	// 중복체크
 	function duplicateCheck(event){
 		
 		let newIdTag = document.querySelector('#input-uid');
 		let newId = newIdTag.value;
+		
+		
 		
 		axios({
 
@@ -141,10 +165,12 @@ document.addEventListener('DOMContentLoaded', function(){
 	        console.log(response); //수신데이타
 			console.log(response.data)
 	        
-	        if(response.data){
-	        	alert("사용할수있는 아이디다")
-	        }else{
-	        	alert("사용할수없다!")
+	        if(response.data == false){
+	        	alert("진행시켜");
+	        	
+	        }else if(response.data == true){
+	        	alert("되겠냐고")
+	        	
 	        }
 	    
 

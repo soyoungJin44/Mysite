@@ -93,16 +93,12 @@ public class UserDao {
 		
 		//중복체크
 		
-		public boolean check(String id) {
+		public int check(String id) {
 			System.out.println("다오 중복체크 준비");
 
-			PersonVo result = sqlSession.selectOne("user.check", id);
+			int count = sqlSession.selectOne("user.check", id);
 			
-			if(result == null) {
-				return true;
-			}else {
-				return false;
-			}
+			return count;
 			
 			
 		}
