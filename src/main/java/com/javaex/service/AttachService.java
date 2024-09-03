@@ -53,27 +53,35 @@ public class AttachService {
 		
 		// dao로 전달 ㄱ (과제)
 		
-//		attachDao.upload(attachVo);
+		int count = attachDao.upload(attachVo);
+		if(count >= 1) {
+		
+			// 2번 :  사진을 서버에 복사해야된다(db에 직접적으로 전달 ㄴㄴ c드라이브에 저장한 주소값만 보낸다)
+						//2-1 파일 저장
+					
+				try{
+					byte[] fileData = file.getBytes();
+					
+					OutputStream os = new FileOutputStream(filePath);
+					BufferedOutputStream bos = new BufferedOutputStream(os);
+					
+					bos.write(fileData);
+					bos.close();
+					
+				}catch(Exception e) {
+					System.out.println(e.toString());
+					
+				};
+					
+					return saveName; // : (시간 + uuid + .jpg)
+				}else {
+					return null;
+			}
+			
+		}
 		
 		// 2번 :  사진을 서버에 복사해야된다(db에 직접적으로 전달 ㄴㄴ c드라이브에 저장한 주소값만 보낸다)
 			//2-1 파일 저장
-		
-		try{
-			byte[] fileData = file.getBytes();
-			
-			OutputStream os = new FileOutputStream(filePath);
-			BufferedOutputStream bos = new BufferedOutputStream(os);
-			
-			bos.write(fileData);
-			bos.close();
-			
-		}catch(Exception e) {
-			System.out.println(e.toString());
-			
-		};
-		
-		return saveName; // : (시간 + uuid + .jpg)
 	}
-	
+		
 
-}

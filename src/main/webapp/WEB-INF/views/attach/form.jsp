@@ -65,7 +65,7 @@
 
 
 			</div>
-			<!-- //content  -->
+			<!-- / /content  -->
 		</div>
 		<!-- //container  -->
 

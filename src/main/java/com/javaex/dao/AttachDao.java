@@ -13,13 +13,13 @@ public class AttachDao {
 	
 	//파일 업로드
 	
-//	public String upload(AttachVo attachVo) {
-//		System.out.println("dao upload 준 완");
-//
-//		AttachVo dataVo = new AttachVo(attachVo);
-//		sqlSession.dataVo
-//		
-//		return "";
-//	}
+	public int upload(AttachVo attachVo) {
+		System.out.println("dao upload 준 완");
+
+		int count = sqlSession.insert("attach.insert", attachVo);
+		
+		System.out.println("yooooooooooooooooa!!" + count);
+		return count;
+	}
 	
 }
