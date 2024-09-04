@@ -42,5 +42,59 @@
 		]]>
 		
 	</select>
+	
+	<select id="selectTotalCnt" resultType="int">
+		<![CDATA[
+			
+			select count(*) count
+			from tboard
+			
+		]]>
+	
+	</select>
+	
+	<!--3번 : 페이징 + 검색 -->
+	<select id="selectList3" parameterType="map" resultType="com.javaex.vo.TboardVo">
+	
+		<![CDATA[
+		
+			SELECT  b.no,
+        			b.title,
+        			b.content,
+        			p.name,
+       				b.hit,
+        			date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') reg_date,
+        			p.no userNo
+			FROM tboard b, person p
+			WHERE  b.user_no = p.no
+		]]>
+		
+		<if test="keyword != null">
+			
+			<![CDATA[
+				and title like concat('%', #{keyword},'%')
+			]]>
+			
+		</if>
+		
+		<![CDATA[
+			order by no asc
+			limit #{startRowNo}, #{listCnt}
+			
+		]]>
+		
+	</select>
+	
+	<!-- 3번 전체갯수 검색 -->
+	<select id="selectTotalCntKeyword" parameterType="String" resultType="int">
+		<![CDATA[
+			
+			select count(*) count
+			from tboard
+			where title like concat('%', #{keyword},'%')
+			
+		]]>
+	
+	</select>
 
 </mapper>

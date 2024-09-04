@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,17 +32,34 @@ public class TboardController {
 		return "/tboard/list";
 	}
 	
+	// <페이징 > 
 	@RequestMapping(value="/tboard/list2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list2(@RequestParam (value="crtpage", required = false, defaultValue = "1") int crtPage, Model model) {
 		System.out.println("list j w!");
 		System.out.println(crtPage);
 		
-		List<TboardVo> tboardList = tboardService.exeList2(crtPage);
+		Map<String, Object> pMap = tboardService.exeList2(crtPage);
 		
-		System.out.println("ccccc" + tboardList);
-		model.addAttribute("tboardList", tboardList);
+		//System.out.println("ccccc" + tboardList);
+		System.out.println("||||||||||" + pMap);
+		model.addAttribute("pMap", pMap);
 		
 		return "/tboard/list2";
+	}
+	
+	// <페이징 + 검색>
+	@RequestMapping(value="/tboard/list3", method= {RequestMethod.GET, RequestMethod.POST})
+	public String list3(@RequestParam (value="crtpage", required = false, defaultValue = "1") int crtPage,
+						@RequestParam (value="keyword", defaultValue="") String keyword,
+						Model model) {
+		
+		Map<String, Object> pMap = tboardService.exeList3(crtPage,keyword);
+		
+		//System.out.println("ccccc" + tboardList);
+		System.out.println("||||||||||" + pMap);
+		model.addAttribute("pMap", pMap);
+		
+		return "/tboard/list3";
 	}
 	
 	
