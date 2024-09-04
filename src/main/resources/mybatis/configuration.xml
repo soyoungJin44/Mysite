@@ -18,6 +18,8 @@
         
         <mapper resource="mybatis/mappers/gallery.xml" />
         
+        <mapper resource="mybatis/mappers/tboard.xml" />
+        
     </mappers>
     
 </configuration>
